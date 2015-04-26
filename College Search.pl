@@ -1,28 +1,33 @@
 % STUDENTS
 
-% Sally Jenkins
+% student(first, last, id, gpa, preferred college ID)
 
-	student_name(st01, sally_jenkins).
-	student_preferred(st01, co01).
-	student_gpa(st01, 3.25).
+% Sally Jenkins ID #01
 
-% Jacob Salem
+	student(sally, jenkins, st01, 3.25, co01).
 
-	student_name(st02, jacob_salem).
-	student_preferred(st02, co01).
-	student_gpa(st02, 2.9).
+% Jacob Salem ID #02
+
+	student(jacob, salem, st02, 2.9, co01).
 	
-% Aaron Bond
+% Aaron Bond ID #03
 
-	student_name(st03, aaron_bond).
-	student_preferred(st03, co02).
-	student_gpa(st03, 4.0).
+	student(aaron, bond, st03, 4.0, co02).
 	
-% COLLEGES
+% COLLEGES 
 
-% Pacific Union College
+% 
 
-	college_name(co01, pacific_union_college).
-	college_roster_get(X) :-
-		read(Y),
-		college_roster(X, Y).
+% Pacific Union College ID #01
+
+	college(pacific_union_college, co01).
+	
+% Fresno Pacific Union ID #02
+	
+	college(fresno_pacific_union, co02).
+	
+% LOGIC
+
+	eligible(Student, College) :-
+		student(X, Y, Student, Gpa, Pref),
+		Pref == College.
