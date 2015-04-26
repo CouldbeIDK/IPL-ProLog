@@ -16,18 +16,24 @@
 	
 % COLLEGES 
 
-% 
+% college(name, ID, MinGPA)
 
 % Pacific Union College ID #01
 
-	college(pacific_union_college, co01).
+	college(pacific_union_college, co01, 3.0).
 	
 % Fresno Pacific Union ID #02
 	
-	college(fresno_pacific_union, co02).
+	college(fresno_pacific_union, co02, 3.2).
 	
 % LOGIC
 
-	eligible(Student, College) :-
-		student(X, Y, Student, Gpa, Pref),
+	is_preferred(Student, College) :-
+		student(X, Y, Student, Z, Pref),
 		Pref == College.
+		
+	is_eligible(Student, College) :-
+		student(X,Y,Student, Gpa, Z),
+		college(A, College, Min),
+		Gpa >= Min.
+	
