@@ -1,8 +1,14 @@
 4/14 12:00am - 1:00am
 1 Hour
+
 4/14 1:05am - 2:05am
 1 Hour - 2 Hours
+
 4/25 10:40pm - 11:40pm
 1 Hour - 3 Hours
-4/25 11:50 - 12:50
+
+4/25 11:50pm - 12:50am
 1 Hour - 4 Hours
+
+4/26 12:50am - 1:50am
+1 Hour - 5 Hours

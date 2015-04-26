@@ -23,3 +23,6 @@
 % Pacific Union College
 
 	college_name(co01, pacific_union_college).
+	college_roster_get(X) :-
+		read(Y),
+		college_roster(X, Y).
