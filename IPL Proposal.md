@@ -15,10 +15,10 @@
 ####Deliverables
 
 
- - Skeleton (D: 7.5 hours): Matching students to colleges, if the college is preferred and has slots available.
+ - Skeleton (D: 7.5 hours): Matching students to colleges, if the college is preferred, and is accepting students.
  - Basic (C: 15 hours) : Adding in college minimum requirements. (Such as SAT scores, GPA's, etc.)
- - Solid (B: 22.5 hours) : Having the colleges prioritize the higher ranking students, picking the "best of the bunch" rather than the first in the list.
- - Awesome (A: 30 hours) : Replace the student ranking of colleges with a list of preferred characteristics that a college should have.
+ - Solid (B: 22.5 hours) : Replace the student ranking of colleges with a list of preferred characteristics that a college should have.
+ - Awesome (A: 30 hours) : Having the colleges prioritize the higher ranking students, picking the "best of the bunch" rather than the first in the list. And have a function that returns the full roster with the given students.
 
 #### Tools
 	SWI ProLog
