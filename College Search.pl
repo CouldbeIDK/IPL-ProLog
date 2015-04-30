@@ -8,6 +8,12 @@
 
 	student(aaron, bond, st03, 4.0, co02).
 	
+	student(anon, man, st04, 3.1, co01).
+	
+	student(that, chick, st05, 1.0, co02).
+	
+	student(some, dude, st06, 1.5, co01).
+	
 % COLLEGES 
 
 % college(name, ID, MinGPA, is accepting students)
@@ -24,3 +30,7 @@
 		
 	is_eligible(Student, College) :-
 		college(_,College,_,true).
+		
+	is_entered(Student, College) :-
+		is_preferred(Student, College),
+		is_eligible(Student, College).
