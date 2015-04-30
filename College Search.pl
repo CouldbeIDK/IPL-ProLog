@@ -29,8 +29,14 @@
 		Pref == College.
 		
 	is_eligible(Student, College) :-
-		college(_,College,_,true).
+		student(_,_,Student,Gpa,_),
+		college(_,College, Min, true),
+		Gpa >= Min.
 		
 	is_entered(Student, College) :-
 		is_preferred(Student, College),
 		is_eligible(Student, College).
+		
+	roster(College) :-
+		findall(Student, (is_entered(Student, College)), X),
+		write(X).
