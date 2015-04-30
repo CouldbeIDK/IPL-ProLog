@@ -10,16 +10,11 @@
 	
 % COLLEGES 
 
-% college(name, ID, MinGPA, roster)
+% college(name, ID, MinGPA, is accepting students)
 
-	college(pacific_union_college, co01, 3.0, ro01).
+	college(pacific_union_college, co01, 3.0, true).
 	
-	college(fresno_pacific_union, co02, 3.2, ro02).
-	
-% ROSTER
-
-	b_setval(ro01, []).
-	b_setval(ro02, []).
+	college(fresno_pacific_union, co02, 3.2, false).
 	
 % LOGIC
 
@@ -28,8 +23,4 @@
 		Pref == College.
 		
 	is_eligible(Student, College) :-
-		student(_, _,Student, Gpa, _),
-		college(_, College, Min, _),
-		Gpa >= Min.
-	
-	
+		college(_,College,_,true).
