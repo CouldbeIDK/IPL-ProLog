@@ -2,34 +2,34 @@
 
 % student(first, last, id, gpa, preferred college ID)
 
-	student(sally, jenkins, st01, 3.25, co01).
+	student('Sally Jenkins', st01, 3.25, co01).
 
-	student(jacob, salem, st02, 2.9, co01).
+	student('James Saylor', st02, 2.9, co01).
 
-	student(aaron, bond, st03, 4.0, co02).
+	student('Aaron Bond', st03, 4.0, co02).
 	
-	student(anon, man, st04, 3.1, co01).
+	student('Anon Man', st04, 3.1, co01).
 	
-	student(that, chick, st05, 1.0, co02).
+	student('That Chick', st05, 1.0, co02).
 	
-	student(some, dude, st06, 1.5, co01).
+	student('Some Dude', st06, 1.5, co01).
 	
 % COLLEGES 
 
 % college(name, ID, MinGPA, is accepting students)
 
-	college(pacific_union_college, co01, 3.0, true).
+	college('Pacific Union College', co01, 3.0, true).
 	
-	college(fresno_pacific_union, co02, 3.2, false).
+	college('Fresno Pacific Union', co02, 3.2, false).
 	
 % LOGIC
 
 	is_preferred(Student, College) :-
-		student(_, _, Student, _, Pref),
+		student(_, Student, _, Pref),
 		Pref == College.
 		
 	is_eligible(Student, College) :-
-		student(_,_,Student,Gpa,_),
+		student(_,Student,Gpa,_),
 		college(_,College, Min, true),
 		Gpa >= Min.
 		
