@@ -8,7 +8,7 @@
 
 	student('Aaron Bond', st03, 4.0, city, 9, 1).
 	
-	student('Anon Man', st04, 3.1, isolated,  6, 2).
+	student('Anon Man', st04, 3.1, isolated, 6, 2).
 	
 	student('That Chick', st05, 1.0, city, 4, 3).
 	
@@ -20,23 +20,22 @@
 
 	college('Pacific Union College', co01, 3.0, true, isolated, 7.5, 2).
 	
-	college('Fresno Pacific Union', co02, 3.2, false, city, 6, 3).
+	college('Fresno Pacific Union', co02, 3.2, true, city, 6, 3).
 	
 % LOGIC
 
 	is_preferred(Student, College) :-
 		student(_,Student,_,Ploc, Prat, Psiz),
-		college(_,College,_, Loc, Rat, Siz),
+		college(_,College,_,_, Loc, Rat, Siz),
 		Ploc == Loc,
-		Prat <= Rat,
-		Siz - Psiz < 1 .
+		Rat >= Prat.
 		
 	is_eligible(Student, College) :-
 		student(_,Student,Gpa,_,_,_),
 		college(_,College, Min, true,_,_,_),
 		Gpa >= Min.
 		
-	is_entered(Student, College) :-
+	is_reccomended(Student, College) :-
 		is_preferred(Student, College),
 		is_eligible(Student, College).
 		
