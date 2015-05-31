@@ -1,44 +1,110 @@
 % STUDENTS
 
-% student(first & last, id, gpa, preferred college location, preferred college rating, preferred college size[1 = small, 2 = average size, 3 =large)
+	student(Name, ID) :-
+		member(Name/ID,
+		[
+		'Sally Jenkins'/st01, 
+		'James Saylor'/st02, 
+		'Aaron Bond'/st03, 
+		'Anon Man'/st04, 
+		'That Chick'/st05, 
+		'Some Dude'/st06
+		]
+	).
 
-	student('Sally Jenkins', st01, 3.25, city, 7, 3).
+	gpa(ID, GPA) :-
+		member(ID/GPA,
+		[
+		st01/3.25,
+		st02/3.0,
+		st03/4.0,
+		st04/3.3,
+		st05/1.0,
+		st06/3.0
+		]
+	).
+	
+	preferred_location(ID, Loc) :-
+		member(ID/Loc,
+		[
+		st01/city
+		st02/isolated
+		st03/city
+		st04/isolated
+		st05/city
+		st06/city
+		]
+	).
+	
+	preferred_rating(ID, Rate) :-
+		member(ID/Rate,
+		[
+		st01/7
+		st02/7
+		st03/9
+		st04/6
+		st05/4
+		st06/5
+		]
+	).
+	
+	% 1 = small, 2 = medium, 3 = large number of students
+	preferred_size(ID,Size) :-
+		member(ID/Size,
+		[
+		st01/3
+		st02/2
+		st03/1
+		st04/2
+		st05/3
+		st06/3
+		]
+	).
 
-	student('James Saylor', st02, 2.9, isolated, 7, 2).
-
-	student('Aaron Bond', st03, 4.0, city, 9, 1).
-	
-	student('Anon Man', st04, 3.1, isolated, 6, 2).
-	
-	student('That Chick', st05, 1.0, city, 4, 3).
-	
-	student('Some Dude', st06, 1.5, city, 5, 3).
-	
 % COLLEGES 
 
-% college(name, ID, MinGPA, is accepting students, location, ranking, size)
-
-	college('Pacific Union College', co01, 3.0, true, isolated, 7.5, 2).
+	college(Name, ID) :-
+		member(ID/Rate,
+		[
+		'Pacific Union College'/co01,
+		'Fresno Pacific Union'/co02
+		]
+	).
 	
-	college('Fresno Pacific Union', co02, 3.2, true, city, 6, 3).
+	min_gpa(ID, GPA) :-
+		member(ID/GPA,
+		[
+		co01/3.0,
+		co02/3.2
+		]
+	).
+	
+	college_ranking(ID, Rank) :-
+		member(ID/GPA,
+		[
+		co01/7.5,
+		co02/7
+		]
+	).
+	
+	college_size(ID, Size) :-
+		member(ID/Size,
+		[
+		co01/2,
+		co02,3
+		]
+	).
 	
 % LOGIC
-
-	is_preferred(Student, College) :-
-		student(_,Student,_,Ploc, Prat, Psiz),
-		college(_,College,_,_, Loc, Rat, Siz),
-		Ploc == Loc,
-		Rat >= Prat.
 		
 	is_eligible(Student, College) :-
-		student(_,Student,Gpa,_,_,_),
-		college(_,College, Min, true,_,_,_),
-		Gpa >= Min.
+		gpa(Student, GPA),
+		min_gpa(College, Min),
+		GPA >= Min.
 		
-	is_reccomended(Student, College) :-
-		is_preferred(Student, College),
-		is_eligible(Student, College).
+	can_enter(Student, College) :-
+		is_eligible(Student, College),
+		%number of students who would get in is less than the max amount of slots.
 		
-	roster(College) :-
-		findall(Student, (is_entered(Student, College)), X),
-		write(X).
+	preferred_score(Student, College, Wieght) :-
+		%weight determined by meeting the characteristics.

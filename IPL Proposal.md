@@ -21,12 +21,12 @@ Finding the right college can be very difficult for a new high-school graduate, 
  - Awesome (A: 30 hours) : Having the colleges prioritize the higher ranking students, picking the "best of the bunch" rather than the first in the list. .
 
 #### Tools
-	SWI ProLog
+SWI ProLog
 
 ####Possible Problems:
-	Being that ProLog is a logic based language, I think the most obvious problem I am going to face is trying to write in this code that is new to me.
+Being that ProLog is a logic based language, I think the most obvious problem I am going to face is trying to write in this code that is new to me.
 
 ####References
-	I will primarily using wikipedia, and the SWI ProLog documentation, which can be found below.
+I will primarily using wikipedia, and the SWI ProLog documentation, which can be found below.
 
 [Prolog Documentation](http://www.swi-prolog.org/download/stable)
