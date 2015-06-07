@@ -36,18 +36,6 @@
 		]
 	).
 	
-	preferred_rating(ID, Rate) :-
-		member(ID/Rate,
-		[
-		st01/7
-		st02/7
-		st03/9
-		st04/6
-		st05/4
-		st06/5
-		]
-	).
-	
 	% 1 = small, 2 = medium, 3 = large number of students
 	preferred_size(ID,Size) :-
 		member(ID/Size,
@@ -96,6 +84,20 @@
 	).
 	
 % LOGIC
+				
+	preferred_score(Student, College, Wieght) :-
+		%weight determined by meeting the characteristics.
+		
+		better_grades(Student1, Student2) :-
+		gpa(Student1, GPA1),
+		gpa(Student2, GPA2),
+		GPA1 > GPA2.
+		
+	has_preference(Student1, Student2) :-
+		 better_grades(Student1, Student2),
+		 preferred_location(Student1, X),
+		 preferred_location(Student2, Y),
+		 X=Y.
 		
 	is_eligible(Student, College) :-
 		gpa(Student, GPA),
@@ -103,8 +105,8 @@
 		GPA >= Min.
 		
 	can_enter(Student, College) :-
-		is_eligible(Student, College),
-		%number of students who would get in is less than the max amount of slots.
-		
-	preferred_score(Student, College, Wieght) :-
-		%weight determined by meeting the characteristics.
+		is_eligible(Student, College), 
+		findall(X, has_preference(X, Student), List),
+		length(List, Length),
+		space(College, Space),
+		Length < Space.
