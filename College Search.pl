@@ -1,5 +1,5 @@
 	students([st01,st02,st03,st04,st05,st06]).
-	colleges([co0101,co0102,co0201,co0202,co0203,co0001,co0002,co0003,co0004,co0005,co0006]).
+	colleges([co0101,co0102,co0201,co0202,co0203,co0001]).
 
 	student_name(Name, ID) :-
 		member(Name/ID,
