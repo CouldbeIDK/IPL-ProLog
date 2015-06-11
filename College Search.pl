@@ -1,3 +1,5 @@
+	%Code is adapted from a solution to the simple marriage problem done here http://akira.ruc.dk/~jpg/PrologIntro/stable_marriage.html.
+	
 	students([st01,st02,st03,st04,st05,st06]).
 	colleges([co0101,co0102,co0201,co0202,co0203,co0001]).
 
@@ -25,6 +27,7 @@
 		]
 	).
 	
+	%Students 1,3,5,6 prefer college 2, Students 2,4 prefer college 1. The colleges prefer the students with the highest GPA.
 	choice(Stu,Spot,Num) :-
 		member(Stu/Spot/Num,
 		[
@@ -180,6 +183,23 @@
 		]
 	).
 	
+	slot_ID(Name, ID) :-
+		member(Name/ID,
+		[
+		co00/co0001,
+		co00/co0002,
+		co00/co0003,
+		co00/co0004,
+		co00/co0005,
+		co00/co0006,
+		co01/co0101,
+		co01/co0102,
+		co02/co0201,
+		co02/co0202,
+		co02/co0203
+		]
+	).
+	
 	min_gpa(ID, GPA) :-
 		member(ID/GPA,
 		[
@@ -236,6 +256,21 @@
 	insert(X,[Y|Ys],[Y|Zs]) :-
 		insert(X,Ys,Zs).
 		
+	name_assoc(Name, College) :-
+		student_name(Name,Student),
+		slot_ID(College,Slot),
+		solution(S),
+		member(pairing(Student,Slot),S).
+	
+	roster(College) :-
+		findall(Name, name_assoc(Name, College), Names),
+		write(Names).
+		
+	destiny(Student) :-
+		college_name(Name,Slot),
+		solution(S),
+		member(pairing(Student,Slot),S),
+		write(Name).
 	
 	can_enter(Student, College) :-
 		is_eligible(Student, College), 
